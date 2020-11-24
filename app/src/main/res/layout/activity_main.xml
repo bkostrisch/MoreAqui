@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/background">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="154dp"
+        android:layout_height="175dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60px"
+        app:srcCompat="@drawable/logo"
+        tools:layout_editor_absoluteX="120dp"
+        tools:layout_editor_absoluteY="37dp" />
+
+    <ImageButton
+        android:id="@+id/btn_novo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        app:srcCompat="@drawable/btn_novo"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/logo"/>
+    <ImageButton
+        android:id="@+id/btn_visualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        app:srcCompat="@drawable/btn_visualizar"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btn_novo"/>
+
+    <ImageButton
+        android:id="@+id/btn_mapa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        app:srcCompat="@drawable/btn_mapa"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btn_visualizar"/>
+
+    <ImageButton
+        android:id="@+id/btn_gravar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        app:srcCompat="@drawable/btn_gravar"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btn_mapa"/>
+</RelativeLayout>

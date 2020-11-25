@@ -21,7 +21,7 @@ public class Banco extends SQLiteOpenHelper {
     private static final String TYPE_COLUMN = "type";
     private static final String SIZE_COLUMN = "size";
     private static final String BUILDING_COLUMN = "building";
-
+    private static final String OCCUPY_COLUMN = "occupy";
 
 
     public Banco(Context context) {
@@ -34,7 +34,7 @@ public class Banco extends SQLiteOpenHelper {
 
         String QUERY_COLUMN = "CREATE TABLE " + TABELA_IMOVEL + "("
                 + ID_COLUMN + " INTEGER PRIMARY KEY, " + PHONE_COLUMN + " TEXT,"
-                + TYPE_COLUMN + " TEXT, " + SIZE_COLUMN + " TEXT, " + BUILDING_COLUMN + " TEXT) ";
+                + TYPE_COLUMN + " TEXT, " + SIZE_COLUMN + " TEXT, " + BUILDING_COLUMN + " TEXT, " + OCCUPY_COLUMN + " TEXT) ";
 
         db.execSQL(QUERY_COLUMN);
 
@@ -55,6 +55,7 @@ public class Banco extends SQLiteOpenHelper {
         values.put(TYPE_COLUMN, imovel.getType());
         values.put(SIZE_COLUMN, imovel.getSize());
         values.put(BUILDING_COLUMN, imovel.getBuilding());
+        values.put(OCCUPY_COLUMN, imovel.getOccupy());
 
         db.insert(TABELA_IMOVEL, null, values);
         db.close();
@@ -64,14 +65,14 @@ public class Banco extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TABELA_IMOVEL, new String[] {ID_COLUMN, PHONE_COLUMN, TYPE_COLUMN, SIZE_COLUMN, BUILDING_COLUMN},
+        Cursor cursor = db.query(TABELA_IMOVEL, new String[] {ID_COLUMN, PHONE_COLUMN, TYPE_COLUMN, SIZE_COLUMN, BUILDING_COLUMN, OCCUPY_COLUMN},
                 ID_COLUMN + " = ?", new String[] {String.valueOf(codigo)}, null, null, null, null);
 
         if(cursor != null){
             cursor.moveToFirst();
         }
 
-        Imovel imovel = new Imovel(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+        Imovel imovel = new Imovel(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5));
 
         return imovel;
 
@@ -105,6 +106,7 @@ public class Banco extends SQLiteOpenHelper {
                 imovel.setType(i.getString(2));
                 imovel.setSize(i.getString(3));
                 imovel.setBuilding(i.getString(4));
+                imovel.setOccupy(i.getString(5));
 
                 listaImovel.add(imovel);
 

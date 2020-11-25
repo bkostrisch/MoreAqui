@@ -34,6 +34,7 @@ public class NewActivity extends AppCompatActivity {
         RadioButton ns2 = (RadioButton) findViewById(R.id.btn_naosei2);
 
         CheckBox build = (CheckBox) findViewById(R.id.btn_emconstrucao);
+        CheckBox occupy = (CheckBox) findViewById(R.id.btn_ocupado);
 
         EditText telefone = (EditText) findViewById(R.id.phone_input);
         ImageButton pronto = (ImageButton) findViewById(R.id.btn_pronto);
@@ -57,11 +58,17 @@ public class NewActivity extends AppCompatActivity {
                         im.setBuilding("Pronto");
                     }
 
+                    if(occupy.isChecked()){
+                        im.setOccupy("Ocupado");
+                    } else {
+                        im.setOccupy("Sem Moradores");
+                    }
+
                     if (telefone.length() == 11 && tipo != null && tamanho != null ){
 
                         db.addImovel(im);
 
-                        Log.v("Imóvel Cadastrado", "Id: " + im.getId() + "Telefone:" + im.getPhone() + " Tipo: " + im.getType() + " Tamanho: " + im.getSize() + " Status: " + im.getBuilding() );
+                        Log.v("Imóvel Cadastrado", "Id: " + im.getId() + "Telefone:" + im.getPhone() + " Tipo: " + im.getType() + " Tamanho: " + im.getSize() + " Status: " + im.getBuilding() + " e " + im.getOccupy() );
                         finish();
                         Toast.makeText(getApplicationContext(), "Dados salvos com sucesso!", Toast.LENGTH_SHORT).show();
 

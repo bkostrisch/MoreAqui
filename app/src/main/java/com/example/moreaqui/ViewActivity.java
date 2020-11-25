@@ -16,9 +16,8 @@ import java.util.List;
 
 public class ViewActivity extends AppCompatActivity {
 
-    ListView lista_imoveis = (ListView) findViewById(R.id.lista_imoveis);
-
-    Banco db = new Banco(this);
+    ListView lista_imoveis;
+    Banco db;
 
     ArrayAdapter<String> adapter;
     ArrayList<String> arrayList;
@@ -27,6 +26,10 @@ public class ViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
+
+         lista_imoveis = (ListView) findViewById(R.id.lista_imoveis);
+
+         db = new Banco(this);
 
         listarImoveis();
 
@@ -44,8 +47,8 @@ public class ViewActivity extends AppCompatActivity {
 
         for(Imovel i : imoveis){
 
-            Log.d("Lista", "\nID: " + i.getId() + "-" + i.getPhone() + "-" + i.getType() + "-" + i.getSize() + "-" + i.getBuilding());
-            arrayList.add(i.getId() + "-" + i.getPhone() + "-" + i.getType() + "-" + i.getSize() + "-" + i.getBuilding());
+            Log.d("Lista", "\nTelefone: "+ i.getPhone() + "Tipo: " + i.getType() + "Tamanho: " + i.getSize() + "Status: " + i.getBuilding() + " e " + i.getOccupy());
+            arrayList.add("Telefone: " + i.getPhone() + "\nTipo: " + i.getType() + "\nTamanho: " + i.getSize() + "\nStatus: " + i.getBuilding() + " e " + i.getOccupy() + "\n");
             adapter.notifyDataSetChanged();
         }
 

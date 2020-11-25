@@ -6,29 +6,32 @@ public class Imovel {
     String phone;
     String type, size;
     String building;
+    String occupy;
 
     public Imovel(){
 
 
     }
 
-    public Imovel(int _id, String _phone, String _type, String _size, String _building){
+    public Imovel(int _id, String _phone, String _type, String _size, String _building, String _occupy){
 
         this.id = _id;
         this.phone = _phone;
         this.type = _type;
         this.size = _size;
         this.building = _building;
+        this.occupy = _occupy;
 
 
     }
 
-    public Imovel(String _phone, String _type, String _size, String _building){
+    public Imovel(String _phone, String _type, String _size, String _building, String _occupy){
 
         this.phone = _phone;
         this.type = _type;
         this.size = _size;
         this.building = _building;
+        this.occupy = _occupy;
 
 
     }
@@ -72,4 +75,8 @@ public class Imovel {
     public void setBuilding(String building) {
         this.building = building;
     }
+
+    public String getOccupy() { return occupy; }
+
+    public void setOccupy(String occupy) { this.occupy = occupy; }
 }

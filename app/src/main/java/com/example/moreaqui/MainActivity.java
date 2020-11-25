@@ -55,9 +55,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Imovel imovel = db.selecionarImovel(1);
+        //Imovel imovel = db.selecionarImovel(0);
 
-        Log.d("Imovel Selecionado", " Codigo: " + imovel.getId() + " Phone: " + imovel.getPhone() + " Tipo: " + imovel.getType() + " Tam: " + imovel.getSize()+ " Build: " + imovel.getBuilding());
+        //Log.d("Imovel Selecionado", " Codigo: " + imovel.getId() + " Phone: " + imovel.getPhone() + " Tipo: " + imovel.getType() + " Tam: " + imovel.getSize()+ " Build: " + imovel.getBuilding());
 
     }
 

@@ -1,3 +1,10 @@
 <resources>
+    <string name="point_label">%.4f</string>
     <string name="app_name">More Aqui</string>
+    <string name="latitude_label">"Latitude: "</string>
+    <string name="longitude_label">"Longitude: "</string>
+    <string name="unknown">"Desconhecido"</string>
+    <string name="location_not_available">"Local não disponível."</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="map_key" translatable="false">AIzaSyAH78U39eogrh1pjDCm5doU-wv2u5l1ucg</string>
 </resources>

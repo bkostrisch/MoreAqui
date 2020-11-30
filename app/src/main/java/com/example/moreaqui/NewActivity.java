@@ -1,8 +1,13 @@
 package com.example.moreaqui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,7 +16,18 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 
 public class NewActivity extends AppCompatActivity {
 
@@ -19,6 +35,10 @@ public class NewActivity extends AppCompatActivity {
     String tamanho;
     Banco db = new Banco(this);
     Imovel im = new Imovel();
+    private static final int REQUEST_CODE = 101;
+    Location currentLocation;
+    FusedLocationProviderClient fusedLocationProviderClient;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +59,8 @@ public class NewActivity extends AppCompatActivity {
         EditText telefone = (EditText) findViewById(R.id.phone_input);
         ImageButton pronto = (ImageButton) findViewById(R.id.btn_pronto);
 
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        fetchLastLocation();
 
 
         /* Botão Pronto */
@@ -68,7 +90,7 @@ public class NewActivity extends AppCompatActivity {
 
                         db.addImovel(im);
 
-                        Log.v("Imóvel Cadastrado", "Id: " + im.getId() + "Telefone:" + im.getPhone() + " Tipo: " + im.getType() + " Tamanho: " + im.getSize() + " Status: " + im.getBuilding() + " e " + im.getOccupy() );
+                        Log.v("Imóvel Cadastrado", "Id: " + im.getId() + "Telefone:" + im.getPhone() + " Tipo: " + im.getType() + " Tamanho: " + im.getSize() + " Status: " + im.getBuilding() + " e " + im.getOccupy() + " Localização: " + im.getLatitude() + " // " + im.getLongitude());
                         finish();
                         Toast.makeText(getApplicationContext(), "Dados salvos com sucesso!", Toast.LENGTH_SHORT).show();
 
@@ -199,5 +221,49 @@ public class NewActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void fetchLastLocation() {
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this, new String[]
+                    {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
+
+            return;
+        }
+
+        Task<Location> task = fusedLocationProviderClient.getLastLocation();
+        task.addOnSuccessListener(new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+
+                if(location != null){
+
+                    currentLocation = location;
+
+                    im.setLatitude(currentLocation.getLatitude());
+                    im.setLongitude(currentLocation.getLongitude());
+
+                }
+
+            }
+
+        });
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch(requestCode){
+            case REQUEST_CODE:
+                if (grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+
+                    fetchLastLocation();
+
+                }
+
+                break;
+        }
     }
 }

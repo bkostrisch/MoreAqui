@@ -18,7 +18,6 @@ public class ViewActivity extends AppCompatActivity {
 
     ListView lista_imoveis;
     Banco db;
-
     ArrayAdapter<String> adapter;
     ArrayList<String> arrayList;
 
@@ -47,9 +46,10 @@ public class ViewActivity extends AppCompatActivity {
 
         for(Imovel i : imoveis){
 
-            Log.d("Lista", "\nTelefone: "+ i.getPhone() + "Tipo: " + i.getType() + "Tamanho: " + i.getSize() + "Status: " + i.getBuilding() + " e " + i.getOccupy());
-            arrayList.add("Telefone: " + i.getPhone() + "\nTipo: " + i.getType() + "\nTamanho: " + i.getSize() + "\nStatus: " + i.getBuilding() + " e " + i.getOccupy() + "\n");
+            Log.d(" Lista", "\n Telefone: "+ i.getPhone() + " Tipo: " + i.getType() + " Tamanho: " + i.getSize() + " Status: " + i.getBuilding() + " e " + i.getOccupy() + " Localização: " + i.getLatitude() + " // " + i.getLongitude());
+            arrayList.add("Telefone: " + i.getPhone() + "\nTipo: " + i.getType() + "\nTamanho: " + i.getSize() + "\nStatus: " + i.getBuilding() + " e " + i.getOccupy() + "\nLocalização: " + i.getLatitude() + " // " + i.getLongitude());
             adapter.notifyDataSetChanged();
+
         }
 
 

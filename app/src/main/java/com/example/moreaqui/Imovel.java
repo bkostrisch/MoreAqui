@@ -7,13 +7,15 @@ public class Imovel {
     String type, size;
     String building;
     String occupy;
+    Double latitude;
+    Double longitude;
 
     public Imovel(){
 
 
     }
 
-    public Imovel(int _id, String _phone, String _type, String _size, String _building, String _occupy){
+    public Imovel(int _id, String _phone, String _type, String _size, String _building, String _occupy, Double _latitude, Double _longitude){
 
         this.id = _id;
         this.phone = _phone;
@@ -21,18 +23,20 @@ public class Imovel {
         this.size = _size;
         this.building = _building;
         this.occupy = _occupy;
-
+        this.latitude = _latitude;
+        this.longitude = _longitude;
 
     }
 
-    public Imovel(String _phone, String _type, String _size, String _building, String _occupy){
+    public Imovel(String _phone, String _type, String _size, String _building, String _occupy, Double _latitude, Double _longitude){
 
         this.phone = _phone;
         this.type = _type;
         this.size = _size;
         this.building = _building;
         this.occupy = _occupy;
-
+        this.latitude = _latitude;
+        this.longitude = _longitude;
 
     }
 
@@ -79,4 +83,12 @@ public class Imovel {
     public String getOccupy() { return occupy; }
 
     public void setOccupy(String occupy) { this.occupy = occupy; }
+
+    public Double getLatitude() { return latitude; }
+
+    public void setLatitude(Double latitude) { this.latitude = latitude; }
+
+    public Double getLongitude() { return longitude; }
+
+    public void setLongitude(Double longitude) { this.longitude = longitude; }
 }

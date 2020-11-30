@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     Banco db = new Banco(this);
@@ -51,13 +53,20 @@ public class MainActivity extends AppCompatActivity {
         btn_gravar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getBaseContext(), RecordActivity.class));
+
+                Banco estateData = Banco.getInstance(MainActivity.this);
+
+                List<LocationEstate> estates = estateData.getAllEstates();
+
+                new RecordData().execute(estates);
+
             }
         });
 
-        //Imovel imovel = db.selecionarImovel(0);
 
-        //Log.d("Imovel Selecionado", " Codigo: " + imovel.getId() + " Phone: " + imovel.getPhone() + " Tipo: " + imovel.getType() + " Tam: " + imovel.getSize()+ " Build: " + imovel.getBuilding());
+        //Imovel imovel = db.selecionarImovel(1);
+
+        //Log.d("Imovel Selecionado", " Codigo: " + imovel.getId() + " Phone: " + imovel.getPhone() + " Tipo: " + imovel.getType() + " Tam: " + imovel.getSize() + " Build: " + imovel.getBuilding() + "Localização: " + imovel.getLatitude() + " // " + imovel.getLongitude());
 
     }
 

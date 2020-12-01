@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Imóveis"
-        android:fontFamily="@font/yaquote"
+        android:fontFamily="@font/ell"
         android:textSize="55dp"
         android:layout_centerHorizontal="true"/>
 

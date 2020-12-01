@@ -40,7 +40,7 @@ public class ViewActivity extends AppCompatActivity {
 
         arrayList = new ArrayList<String>();
 
-        adapter = new ArrayAdapter<String>(ViewActivity.this, android.R.layout.simple_list_item_1, arrayList);
+        adapter = new ArrayAdapter<String>(ViewActivity.this, R.layout.lista, arrayList);
 
         lista_imoveis.setAdapter(adapter);
 

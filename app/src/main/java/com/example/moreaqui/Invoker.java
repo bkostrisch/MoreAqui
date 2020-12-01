@@ -1,4 +1,5 @@
-  package com.example.moreaqui;
+package com.example.moreaqui;
+
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -7,7 +8,7 @@ import java.net.Socket;
  * This class implemented the invoker of the Command design pattern. An invoker
  * is an object that receives a command, establishes a connection with a server
  * through a DAO, and executed the actions of the command on the server.
- * 
+ *
  * @author Fernando
  *
  */
@@ -33,7 +34,7 @@ public class Invoker {
 
   /**
    * Constructor method.
-   * 
+   *
    * @param newHost the host where a connection must be established.
    * @param newPort the port in the server host where connection must be made.
    */
@@ -74,10 +75,8 @@ public class Invoker {
 
   /**
    * This method invokes a command over a DAO.
-   * 
-   * @param d the DAO that will interface communication with the server.
-   * @param c the command that contains the actions that will be executed.
-   */
+   *  @param d the DAO that will interface communication with the server.
+   * @param c the command that contains the actions that will be executed.*/
   public final void invoke(final DaoImpl d, final Command c) {
     openConnection();
     d.setChannels(out, in);

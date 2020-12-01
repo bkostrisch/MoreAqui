@@ -2,7 +2,6 @@ package com.example.moreaqui;
 /**
  * The Data Object Interface (DAO) works as a layer between the application
  * logic and the database.
- * 
  * @author Fernando
  *
  * @param <K> The type of the key of the elements stored in the database.
@@ -41,7 +40,6 @@ public interface DAO<K, V> {
 
    /**
     * Returns a value, given a key.
-    * 
     * @param key the id of the object that must be found.
     * @return V the value associated with the key K.
     */
@@ -49,7 +47,6 @@ public interface DAO<K, V> {
 
    /**
     * Adds a new object into the database.
-    * 
     * @param key   the id of the object that will be inserted into the database.
     * @param value the value associated with the key K.
     */
@@ -57,14 +54,12 @@ public interface DAO<K, V> {
 
    /**
     * Removes an object from the database.
-    * 
     * @param key the id of the object that will be removed.
     */
    void delete(K key);
 
    /**
     * Updates an object in the database.
-    * 
     * @param key   the id of the object that will be replaced.
     * @param value the new value of the object associated with the given key.
     */
@@ -72,7 +67,6 @@ public interface DAO<K, V> {
 
    /**
     * Informs the number of elements stored in the database.
-    * 
     * @return an integer number that tells how many objects are currently stored in
     *         the database.
     */

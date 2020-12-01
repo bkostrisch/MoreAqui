@@ -45,13 +45,13 @@ import static android.Manifest.permission.INTERNET;
 
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    Location currentLocation;
-    FusedLocationProviderClient fusedLocationProviderClient;
+    private Location currentLocation;
+    private FusedLocationProviderClient fusedLocationProviderClient;
     private static final int REQUEST_CODE = 101;
-    Banco db;
-    GoogleMap gMap;
-    ArrayAdapter<String> adapter;
-    ArrayList<String> arrayList;
+    private Banco db;
+    private GoogleMap gMap;
+    private ArrayAdapter<String> adapter;
+    private ArrayList<String> arrayList;
 
 
     @Override
@@ -104,10 +104,11 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("Você está aqui!");
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5));
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
         googleMap.addMarker(markerOptions);
 
         listarMarkers(googleMap);
+
 
     }
 

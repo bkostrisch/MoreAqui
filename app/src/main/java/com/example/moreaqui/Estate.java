@@ -1,11 +1,5 @@
 package com.example.moreaqui;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
-
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This class describes a real estate.
@@ -13,7 +7,6 @@ import java.util.List;
  * @author fernando
  *
  */
-
 public class Estate implements Serializable {
   /** The serial version of this class. */
   private static final long serialVersionUID = 1734003038366261208L;
@@ -43,7 +36,6 @@ public class Estate implements Serializable {
   public static final int LARGE = 3;
 
   /** The telephone of the seller. */
-//  public final int PHONE;
   public final String PHONE;
 
   /** The type of the estate: house, apartment or shop. */
@@ -58,37 +50,33 @@ public class Estate implements Serializable {
   /**
    * Class constructor.
    *
-   * @param type
-   *        either house, apartment or shop.
-   * @param size
-   *        either small, large or medium.
-   * @param phone
-   *        the phone of the seller.
-   * @param inConstruction
-   *        true if the estate is still under construction.
+   * @param type           either house, apartment or shop.
+   * @param size           either small, large or medium.
+   * @param phone          the phone of the seller.
+   * @param inConstruction true if the estate is still under construction.
    */
-//  public Estate(final String type, final String size, final int phone,
-//      final String inConstruction) {
-//    this.TYPE = type;
-//    this.SIZE = size;
-//    this.PHONE = phone;
-//    this.STATUS = inConstruction;
-//  }
-  public Estate(final String type, final String size, final String phone,
-                final String inConstruction) {
+  public Estate(final String type, final String size, final String phone, final String inConstruction) {
     this.TYPE = type;
     this.SIZE = size;
     this.PHONE = phone;
     this.STATUS = inConstruction;
   }
 
-  @Override
-  public final String toString() {
-    String ans = "Imovel: " + TYPE + ", Tamanho: " + SIZE
-        + ", Contato: " + this.PHONE + ", (" + this.STATUS + ")";
-    return ans;
+
+  public String getPHONE() {
+    return PHONE;
   }
 
+  public String getTYPE() {
+    return TYPE;
+  }
 
+  public String getSIZE() {
+    return SIZE;
+  }
+
+  public String getSTATUS() {
+    return STATUS;
+  }
 
 }

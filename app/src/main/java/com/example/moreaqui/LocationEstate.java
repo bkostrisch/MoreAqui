@@ -1,6 +1,5 @@
 package com.example.moreaqui;
 
-
 public class LocationEstate extends Estate {
     /**
      *
@@ -13,16 +12,16 @@ public class LocationEstate extends Estate {
     /** True if the estate is under construction. */
     public final Double LONGITUDE;
 
-//    public LocationEstate(String type, String size, int phone, String inConstruction, double latitude, double longitude) {
-//        super(type, size, phone, inConstruction);
-//        this.LATITUDE = latitude;
-//        this.LONGITUDE = longitude;
-//    }
-
-    public LocationEstate(String type, String size, String phone, String inConstruction, double latitude, double longitude) {
+    public LocationEstate(String type, String size, String phone, String inConstruction, double latitude,
+                          double longitude) {
         super(type, size, phone, inConstruction);
         this.LATITUDE = latitude;
         this.LONGITUDE = longitude;
     }
 
+    @Override
+    public final String toString() {
+        String ans = "Imovel: " + TYPE + ", Tamanho: " + SIZE + ", Contato: " + this.PHONE + ", (" + this.STATUS + ") " + "Latitude: " + this.LATITUDE + " Longitude: " + this.LONGITUDE;
+        return ans;
+    }
 }

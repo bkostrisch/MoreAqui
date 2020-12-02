@@ -32,7 +32,7 @@
         <activity android:name=".MapActivity" />
         <activity android:name=".ViewActivity" />
         <activity android:name=".NewActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MoreAqui5Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

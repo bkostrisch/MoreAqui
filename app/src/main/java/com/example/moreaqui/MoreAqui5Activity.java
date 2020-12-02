@@ -4,14 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageButton;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MoreAqui5Activity extends AppCompatActivity {
 
     /*** Variável que liga a classe ao banco, utilizada aqui para teste no select. */
     // Banco db = new Banco(this);
@@ -57,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Banco estateData = Banco.getInstance(MainActivity.this);
+                Banco estateData = Banco.getInstance(MoreAqui5Activity.this);
 
                 List<LocationEstate> estates = estateData.getAllEstates();
 

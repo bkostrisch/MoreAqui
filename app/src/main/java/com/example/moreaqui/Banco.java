@@ -12,6 +12,7 @@ import java.util.List;
 
 public class Banco extends SQLiteOpenHelper {
 
+    /*** Declaração de variáveis para inserção de dados no banco. */
     private static Banco sInstance;
     private static final int VERSION = 1;
     private static final String BANCO_IMOVEL = "bd_imovel";
@@ -26,11 +27,12 @@ public class Banco extends SQLiteOpenHelper {
     private static final String LONGITUDE_COLUMN = "longitude";
 
 
+    /*** Define o banco e a versão. */
     public Banco(Context context) {
         super(context, BANCO_IMOVEL, null, VERSION);
     }
 
-
+    /*** Cria a tabela dentro do banco com as respectivas variáveis. */
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -40,11 +42,13 @@ public class Banco extends SQLiteOpenHelper {
 
     }
 
+    /*** Atualiza o banco (não está sendo utilizada). */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
 
+    /*** Faz adição de imóvel no banco. */
     void  addImovel(Imovel imovel){
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -63,6 +67,7 @@ public class Banco extends SQLiteOpenHelper {
         db.close();
     }
 
+    /*** Seleciona um imóvel pelo id do cadastro, foi utilizado para testar a inserção de dados no banco. */
     Imovel selecionarImovel(int codigo){
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -80,6 +85,7 @@ public class Banco extends SQLiteOpenHelper {
 
     }
 
+    /*** Deleta dados de imóvel mas não foi aplicado ao app por não ter sido requisitado. */
     void deleteImovel(Imovel imovel){
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -89,6 +95,7 @@ public class Banco extends SQLiteOpenHelper {
         db.close();
     }
 
+    /*** Faz a lista de todos imóveis. */
     public List<Imovel> listaImoveis(){
 
         List<Imovel> listaImovel = new ArrayList<Imovel>();
@@ -122,16 +129,16 @@ public class Banco extends SQLiteOpenHelper {
 
     }
 
+    /*** Instancia o banco. */
     public static synchronized Banco getInstance(Context context) {
-        // Use the application context, which will ensure that you
-        // don't accidentally leak an Activity's context.
-        // See this article for more information: http://bit.ly/6LRzfx
+
         if (sInstance == null) {
             sInstance = new Banco(context.getApplicationContext());
         }
         return sInstance;
     }
 
+    /*** Faz uma listagem de todas estates para inserção no servidor remoto. */
     public List<LocationEstate> getAllEstates() {
         List<LocationEstate> estates = new ArrayList<>();
 

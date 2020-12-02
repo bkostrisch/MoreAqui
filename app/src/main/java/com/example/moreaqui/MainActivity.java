@@ -13,8 +13,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    Banco db = new Banco(this);
-    private Object ContextWrapper;
+    /*** Variável que liga a classe ao banco, utilizada aqui para teste no select. */
+    // Banco db = new Banco(this);
 
 
     @Override
@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        /* Referenciamento de Botões */
 
+        /*** Botão que redireciona o app para página de cadastrar imóveis. */
         ImageButton btn_novo = (ImageButton) findViewById(R.id.btn_novo);
         btn_novo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /*** Botão que redireciona o app para página de visualizar imóveis cadastrados. */
         ImageButton btn_visualizar = (ImageButton) findViewById(R.id.btn_visualizar);
         btn_visualizar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /*** Botão que redireciona o app para página do Mapa. */
         ImageButton btn_mapa = (ImageButton) findViewById(R.id.btn_mapa);
         btn_mapa.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /*** Botão que grava os dados cadastrados no servidor remoto. */
         ImageButton btn_gravar = (ImageButton) findViewById(R.id.btn_gravar);
         btn_gravar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,8 +67,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        /*** Utiliza o select criado no banco para conferir, atraés do id escolhido (1), se há cadastro no banco */
         //Imovel imovel = db.selecionarImovel(1);
-
+        /*** Imprime no logcat os valores respectivos do banco para conferência. */
         //Log.d("Imovel Selecionado", " Codigo: " + imovel.getId() + " Phone: " + imovel.getPhone() + " Tipo: " + imovel.getType() + " Tam: " + imovel.getSize() + " Build: " + imovel.getBuilding() + "Localização: " + imovel.getLatitude() + " // " + imovel.getLongitude());
 
     }

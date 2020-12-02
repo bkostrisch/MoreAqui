@@ -45,15 +45,15 @@ import static android.Manifest.permission.INTERNET;
 
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    /*** Declaração de variáveis para acesso ao mapa do google. */
     private Location currentLocation;
     private FusedLocationProviderClient fusedLocationProviderClient;
     private static final int REQUEST_CODE = 101;
     private Banco db;
-    private GoogleMap gMap;
-    private ArrayAdapter<String> adapter;
     private ArrayList<String> arrayList;
 
 
+    /*** No onCreate estão sendo chamados os métodos criados abaixo, assim como declarada conexão com o banco. */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +65,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
     }
 
+    /*** Acessa a localização atual do usuário após a permissão concedida. Se não conedida, ele pergunta se o usuário gostaria de conceder. */
     private void fetchLastLocation() {
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -98,13 +99,14 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
     }
 
+    /*** Carrega o que está dentro desde método após a leitura do mapa, ou seja, pega a localização atual da pessoa e posiciona um marcador onde ela está. Assim como lista os marcadores dos imóveis cadastrados. */
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
         LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("Você está aqui!");
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 20));
         googleMap.addMarker(markerOptions);
 
         listarMarkers(googleMap);
@@ -112,6 +114,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
     }
 
+    /*** Pede a permissão do usuário para saber sua localização atual. */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch(requestCode){
@@ -126,6 +129,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         }
     }
 
+    /*** Faz uma leitura da localização de cada imóvel cadastrado e adiona um marcador em cada. */
     public void listarMarkers(GoogleMap googleMap){
 
         List<Imovel> imoveis = db.listaImoveis();
@@ -135,7 +139,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         for(Imovel i : imoveis){
 
             LatLng latLng = new LatLng(i.getLatitude(), i.getLongitude());
-            MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(""+i.getId()+"");
+            MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("" + i.getType() + " " + i.getSize() + "");
             googleMap.addMarker(markerOptions);
 
 

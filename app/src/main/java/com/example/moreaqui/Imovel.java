@@ -2,6 +2,7 @@ package com.example.moreaqui;
 
 public class Imovel {
 
+    /*** Declaração das variáveis que serão utilizadas para acessar os valores no banco ao longo do código. */
     int id;
     String phone;
     String type, size;
@@ -15,6 +16,7 @@ public class Imovel {
 
     }
 
+    /*** Concatenação dos valores com as variáveis */
     public Imovel(int _id, String _phone, String _type, String _size, String _building, String _occupy, Double _latitude, Double _longitude){
 
         this.id = _id;
@@ -28,18 +30,7 @@ public class Imovel {
 
     }
 
-    public Imovel(String _phone, String _type, String _size, String _building, String _occupy, Double _latitude, Double _longitude){
-
-        this.phone = _phone;
-        this.type = _type;
-        this.size = _size;
-        this.building = _building;
-        this.occupy = _occupy;
-        this.latitude = _latitude;
-        this.longitude = _longitude;
-
-    }
-
+    /*** Getters and Setters para acessar os valores de cada variável no banco. */
     public int getId() {
         return id;
     }
